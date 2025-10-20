@@ -110,10 +110,12 @@ const displayArtist = (artist) => {
     let deathDate = artist.death_date;
     if (!birthDate && !deathDate) {
         born.innerHTML = `Dates unknown`;
-    } else if (!birthDate) {
-        born.innerHTML = `Birth year unknown`;
-    } else if (!deathDate) {
-        born.innerHTML = `Death year unknown`;
+    } else if (!birthDate && deathDate) {
+        born.innerHTML = `Year unknown - ${deathDate}`;
+    } else if (birthDate && !deathDate) {
+        born.innerHTML = `Born ${birthDate}`;
+    } else if (birthDate == deathDate) {
+        born.innerHTML = `Born ${birthDate}`;
     } else {
         born.innerHTML = `${birthDate} - ${deathDate}`;
     }
