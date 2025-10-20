@@ -37,7 +37,11 @@ const displayArt = (art, url) => {
     const artImg = document.createElement('div');
     artImg.classList.add('artImg');
     let image = document.createElement('img');
-    image.src = `${url}/${art.image_id}${imgUrl}`;
+    if (!art.image_id) {
+        image.src = `img/noImg.jpg`;
+    } else {
+        image.src = `${url}/${art.image_id}${imgUrl}`;
+    }
     image.style.width = '100%';
     artImg.append(image);
     artContainer.append(artImg);
